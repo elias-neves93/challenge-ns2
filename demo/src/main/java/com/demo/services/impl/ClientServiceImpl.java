@@ -24,16 +24,12 @@ public class ClientServiceImpl implements ClientService {
 		return this.clientRepository.findAll();
 	}
 
+
 	@Override
 	public Client listById(String id) {
-		return null;
+		return this.clientRepository.findOne(id);
 	}
 
-	/*
-	@Override
-	public Client listById(String id) {
-		return this.clientRepository.findOne(Client id);
-	}*/
 
 	@Override
 	public Client register(Client client) {
