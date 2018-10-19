@@ -15,12 +15,12 @@ and running application Java
 
 ## Tests routes API via Postman
 
-> APIs endpoints
-> GET http://localhost:8080/client [lista todos os clientes]
-> GET http://localhost:8080/client/{id} [lista um cliente por ID]
-> POST http://localhost:8080/client [cadastra um novo cliente]
-> PUT http://localhost:8080/client/{id} [atualiza os dados de um cliente]
-> DELETE http://localhost:8080/client/{id} [remove um cliente por ID]
+ APIs endpoints
+ GET http://localhost:8080/client [lista todos os clientes]
+ GET http://localhost:8080/client/{id} [lista um cliente por ID]
+ POST http://localhost:8080/client [cadastra um novo cliente]
+ PUT http://localhost:8080/client/{id} [atualiza os dados de um cliente]
+ DELETE http://localhost:8080/client/{id} [remove um cliente por ID]
 
 
 ## 2º Challenge
