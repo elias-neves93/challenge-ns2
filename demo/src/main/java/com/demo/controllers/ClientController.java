@@ -1,20 +1,31 @@
 package com.demo.controllers;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.demo.documents.Client;
 import com.demo.responses.Response;
 import com.demo.services.ClientService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "client")
-
-
 public class ClientController {
 
 
@@ -33,8 +44,16 @@ public class ClientController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Response<Client>> listById(@PathVariable(name = "id") String id) {
-        return ResponseEntity.ok(new Response<Client>(this.clientService.listById(id)));
+    public ResponseEntity<?> listById(@PathVariable(name = "id") String id) {
+        try {
+             Optional<Client> client = clientService.listById(id);
+            if (client.isPresent())
+                return ResponseEntity.ok(client.get());
+            return ResponseEntity.ok("Cliente not found");
+        } catch(Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getStackTrace());
+        }
+
     }
 
     @PostMapping

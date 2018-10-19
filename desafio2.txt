@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class Telefone {
+
+    public static void main(String[] args) {
+
+        System.out.println("Digite seu telefone.");
+        Scanner scanner = new Scanner(System.in);
+
+       String TEL = scanner.next();
+
+        scanner.close();
+      
+        System.out.println("Seu telefone: " + "(" + TEL.substring(0, 2) + ")" + TEL.substring(2, 7) + "-" + TEL.substring(7, 11));
+    }
+}

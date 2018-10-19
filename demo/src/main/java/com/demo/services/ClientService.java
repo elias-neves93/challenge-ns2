@@ -3,12 +3,13 @@ package com.demo.services;
 import com.demo.documents.Client;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClientService {
 
     List<Client> listAll();
 
-    Client listById(String id);
+    Optional<Client> listById(String id);
 
     Client register(Client client);
 
